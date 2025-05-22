@@ -8,7 +8,7 @@
     <title>Lavanya Electronics</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet" />
     <style>
-        body {
+    body {
     margin: 0;
     font-family: 'Outfit', sans-serif;
     background-color: #000000;
@@ -32,10 +32,11 @@
 
 
 h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 2rem;
     color: #FFD700;
+    text-shadow:  0 0 20px gold;
 }
 
 .countdown {
@@ -50,6 +51,7 @@ h1 {
     border-radius: 10px;
     border: 1px solid #FFD700;
     min-width: 80px;
+    box-shadow: 0 0 10px gold;
 }
 
 .countdown span {
@@ -69,7 +71,7 @@ h1 {
 /* Responsive Design */
 @media (max-width: 600px) {
     .logo{
-        height: 100px;
+        height: 300px;
     }
 
     .counter-container{
@@ -87,6 +89,10 @@ h1 {
     .countdown {
         gap: 10px;
     }
+
+    h1{
+        margin: 0;
+    }
 }
 
     </style>
@@ -96,6 +102,8 @@ h1 {
     <div class="counter-container">
     <img src="logo.png" alt="Lavanya Electronics Logo" height="400" class="logo" />
     <h1>Lavanya Electronics Launching In</h1>
+    <h3 style="font-size: 30px;">25th May 2025</h3>
+    <h3 style="font-size: 25px;">at 6PM</h3>
     <div class="countdown">
         <!-- <div><span id="days">00</span><p>Days</p></div> -->
         <div><span id="hours">00</span><p>Hours</p></div>
@@ -105,33 +113,37 @@ h1 {
 </div>
 
 <script>
-    const launchDate = new Date("2025-06-15T00:00:00").getTime();
+  // Launch date: 25 May 2025 at 6:00 PM local time
+  const launchDate = new Date("2025-05-25T18:00:00").getTime();
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = launchDate - now;
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = launchDate - now;
 
-  if (distance <= 0) {
-    document.getElementById("hours").textContent = "00";
-    document.getElementById("minutes").textContent = "00";
-    document.getElementById("seconds").textContent = "00";
-    document.querySelector("h1").textContent = "We're Live!";
-    return;
+    if (distance <= 0) {
+      document.getElementById("hours").textContent = "00";
+      document.getElementById("minutes").textContent = "00";
+      document.getElementById("seconds").textContent = "00";
+      document.querySelector("h1").textContent = "We're Live!";
+      clearInterval(timerInterval);
+      return;
+    }
+
+    const totalHours = Math.floor(distance / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("hours").textContent = String(totalHours).padStart(2, '0');
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
   }
 
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  document.getElementById("hours").textContent = String(hours).padStart(2, '0');
-  document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
-  document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
+  updateCountdown();
+  const timerInterval = setInterval(updateCountdown, 1000);
 </script>
+
+
+
 
 </body>
 
