@@ -169,6 +169,115 @@ hr {
     }
 }
 
+/* -------------------- Responsive Styles -------------------- */
+
+/* Tablets and below */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .site-title {
+        font-size: 1.2rem;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .floating-image {
+        display: none;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero {
+        padding: 80px 10px;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .call-contact {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+    }
+
+    .site-title {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        font-size: 0.95rem;
+    }
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider img {
+  min-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 1;
+  border-radius: 100%;
+}
+
+.prev {
+  left: 10px;
+}
+.next {
+  right: 10px;
+}
+
+
+
 .stats-section {
     background: linear-gradient(135deg, #fdfbfb, #ebedee);
     /* padding: 60px 20px; */
@@ -365,10 +474,29 @@ hr {
 }
 
 .contact-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
     background: #1e3a8a;
     color: white;
     text-align: center;
     padding: 5rem 1rem;
+}
+
+.contact-cta iframe{
+    width: 700px;
+    height: 450px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+    .contact-cta iframe{
+    width: 300px;
+    height: 300px;
+}
 }
 
 .white {
